@@ -6,24 +6,48 @@ services:
 
   db:
     image: postgres
-    container_name: postgres
-    restart: always
+    build: 
+      context: postgres
+    container_name: photoproject-db
+    restart: "no"
     environment:
-      POSTGRES_PASSWORD: example
-
+      POSTGRES_PASSWORD: photoproject-password
+      POSTGRES_USER: photoproject-username
   adminer:
     image: adminer
     container_name: adminer_interface
-    restart: always
+    restart: "no"
     ports:
       - 8080:8080
     depends_on:
       - db
+    
+  api:
+    build: 
+      context: api/src/main/docker/
+      dockerfile: api.Dockerfile
+    container_name: photoproject-api
+    restart: "no"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://photoproject-db:5432/
+      # maybe it needs to set database name after the last dash "/" above
+      - SPRING_DATASOURCE_USERNAME=photoproject-username
+      - SPRING_DATASOURCE_PASSWORD=photoproject-password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-  networks:
-    default:
-      name: intranet
-
+  app:
+    build:
+      context: app
+      dockerfile: app.Dockerfile
+    container_name: photoproject-app
+    restart: "no"
+    ports:
+      - 9000:80
+    depends_on:
+    - db
+    - api
 
 # Run docker-compose -f Docker-compose.yml up,
 #wait for it to initialize completely, and visit http://swarm-ip:8080, http://localhost:8080, or http://host-ip:8080 (as appropriate).
