@@ -1,0 +1,27 @@
+<!-- Se o usuário está logado... se não, redirecionar para a tela de login -->
+<header>
+    <h1>{{user.name}}</h1>
+    <nav>
+        <a>Página Inicial</a>
+        <a>Meu Perfil</a>
+    </nav>
+</header>
+{{count}}
+{{boleano}}
+
+<table mat-table style="width: 100%;margin:30px 0;" [dataSource]="datasource">
+
+    <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let pessoa">{{pessoa.nome}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="idade">
+        <th mat-header-cell *matHeaderCellDef>Idade</th>
+        <td mat-cell *matCellDef="let pessoa">{{pessoa.idade}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let pessoa; columns:colunas"></tr>
+</table>
+<mat-paginator #paginador showFirstLastButtons [pageSizeOptions]="[3,30,50]" pageSize="3" (page)="mudouPagina($event)"></mat-paginator>

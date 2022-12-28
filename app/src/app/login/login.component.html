@@ -1,0 +1,42 @@
+<!-- REACTIVE FORMS MODULE -->
+
+<h1>Faça seu login:</h1>
+<form [formGroup]="loginForm" class="login-form">
+  <input-login></input-login>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Usuário</mat-label>
+    <input matInput type="text" id="username" [formControlName]="usernameFC"/>
+    <!-- [errorStateMatcher] pra que serve??? -->
+    <mat-error *ngIf="loginForm.get(usernameFC).hasError('unregistered')">
+      Usuário não cadastrado
+    </mat-error>
+    <mat-error *ngIf="loginForm.get(usernameFC).errors?.['required']">
+      Campo obrigatório
+    </mat-error>  
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Senha</mat-label>
+    <input matInput type="password" id="password" [formControlName]="passwordFC" />
+    <mat-error *ngIf="loginForm.get(passwordFC).errors?.['required']">
+      Campo obrigatório
+    </mat-error>  
+  </mat-form-field>
+  <button mat-flat-button type="submit" [disabled]="loginForm.invalid" (click)="login()">Entrar</button>
+</form>
+<a mat-button routerLink="/new-password">Esqueci minha senha</a>
+<a mat-button routerLink="/register">Registrar conta</a>
+
+<!-- FORMS MODULE  -->
+<!-- outra forma de fazer formulário no angular -->
+<!-- <h2>Atributos</h2>
+
+<form #form="ngForm">
+  <label>Força</label>
+  <input type="number" name="forca" [(ngModel)]="atributos.forca" min="1" max="255" #inputForca="ngModel" />
+  <div *ngIf="inputForca.dirty">Input alterado</div>
+  <label>Vitalidade</label>
+  <input type="number" name="vitalidade" [(ngModel)]="atributos.vitalidade" min="1" max="255" #inputVitalidade="ngModel" />
+  <div *ngIf="inputVitalidade.dirty">Input alterado</div> -->
+  <!-- <button [disabled]="form.invalid" (click)="loginFormsModule(form)">Login</button> -->
+  <!-- <button [disabled]="form.invalid" (click)="loginFormsModule()">Login</button>
+</form> -->

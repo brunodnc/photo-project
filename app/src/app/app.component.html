@@ -1,0 +1,16 @@
+<!-- <login></login> -->
+<h1 (click)="showHeader = !showHeader">Header</h1>
+<app-header [titulo]="'123'" *ngIf="showHeader"></app-header>
+<form>
+  <mat-form-field style="margin-left: 10px">
+    <input matInput [matDatepicker]="dataPicker" #inputData />
+    <mat-datepicker #dataPicker></mat-datepicker>
+    <mat-datepicker-toggle [for]="dataPicker" matSuffix></mat-datepicker-toggle>
+  </mat-form-field>
+</form>
+{{ inputData.value | date: "dd/MM/yyyy HH:mm:ss" }}
+
+<img [src]="imagem | sanitizer: 'url'" *ngIf="foto" />
+<button (click)="foto = !foto">foto</button>
+<p muda>teste</p>
+<router-outlet></router-outlet>
