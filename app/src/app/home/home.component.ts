@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     { 
       id: 1,
       name: "oiee",
-      creationDate: new Date(),
+      creation: new Date(),
     },
   ];
 
@@ -31,7 +31,7 @@ newClientForm = new FormGroup({
       {
         id: 2,
         name: "oi",
-        creationDate: new Date(),
+        creation: new Date(),
       },
     ];
   }
