@@ -1,32 +1,50 @@
 import { InjectionToken } from "@angular/core";
 
 export interface ITab {
-  id: number;
+  id?: number;
   name: string;
   photos: IPhoto[];
-  link: string;
+  url: string;
   locked: boolean;
-  pwd: string;
-  hash?: string;
+  password: string;
   downloadLimit: number;
-  lock?: boolean;
+  watermark: boolean;
 }
 
 export interface IPhoto {
-  id: number;
-  name: string;
+  id?: number;
+  file_name: string;
   path: string;
   watermark: boolean;
   print: boolean;
-  download: boolean;
-  date: Date;
+  downloaded: boolean;
+  created_at: Date;
+  tab: string;
 }
 
 export interface IClient {
   id?: number;
   name: string;
   tabs?: ITab[];
-  creationDate?: Date;
+  creation?: Date;
+  update?: Date;
+  photographer?: IPhotographer
+}
+
+export interface IPhotographer {
+  id?: number;
+  name: string;
+  username: string;
+  email: string;
+  password?: string;
+  clients?: IClient[];
+  subscription: string;
+
+}
+
+export interface ISubscription {
+  id?: string;
+  name: string;
 }
 
 const token = new InjectionToken<IPhoto>("TESTE");
