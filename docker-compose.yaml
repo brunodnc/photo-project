@@ -29,25 +29,18 @@ services:
     
   api:
     build: 
-      context: api/src/main/docker/
+      context: api/
       dockerfile: api.Dockerfile
     container_name: photoproject-api
     restart: "no"
-    ports:
-      - 9000:80
     depends_on:
       - db
     environment:
-      - SERVER.SERVLET.CONTEXT-PATH=/api
-      #- SPRING_DATASOURCE_URL=jdbc:postgresql://photoproject-db:5432/
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://photoproject-db:5432/
       # maybe it needs to set database name after the last dash "/" above
-      - spring.datasource.hikari.dataSource=org.postgresql.ds.PGSimpleDataSource
-      - spring.datasource.hikari.jdbcUrl=jdbc:postgresql://photoproject-db:5432/
-      - spring.datasource.hikari.username=photoproject-username
-      - spring.datasource.hikari.password=photoproject-password
-      - spring.datasource.hikari.minimumIdle=3
-      - spring.datasource.hikari.minimumIdle=10
-      - spring.jpa.hibernate.ddl-auto=update
+      - SPRING_DATASOURCE_USERNAME=photoproject-username
+      - SPRING_DATASOURCE_PASSWORD=photoproject-password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
   app:
     build:
@@ -56,7 +49,7 @@ services:
     container_name: photoproject-app
     restart: "no"
     ports:
-      - 4200:80
+      - 9000:80
     depends_on:
     - db
     - api
