@@ -14,8 +14,11 @@ sudo docker-compose-up
 access http://localhost:8080/ to manage database after container start
 
 ```
-
+main database name: pp
 ```
+TODO: check if dump is beign loaded on first container initialization
+
+
 
 to run only front-end for development enter app folder and run
 
