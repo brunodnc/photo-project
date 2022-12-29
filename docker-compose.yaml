@@ -29,7 +29,7 @@ services:
     
   api:
     build: 
-      context: api/src/main/docker/
+      context: api/
       dockerfile: api.Dockerfile
     container_name: photoproject-api
     restart: "no"
