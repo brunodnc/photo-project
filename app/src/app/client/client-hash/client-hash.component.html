@@ -2,7 +2,7 @@
 <p>O combinado foi que você poderia escolher {{tab.downloadLimit}} fotos para baixar em alta resolução</p>
 <p>Nesta tela ainda você pode marcar as fotos que você deseja imprimir, basta clicar em 'enviar pedido para impressão abaixo'</p>
 <mat-card *ngFor="let photo of tab.photos">
-    <img mat-card-image [src]="photo.path" [alt]="photo.name" />
+    <img mat-card-image [src]="photo.path" [alt]="photo.file_name" />
     <mat-card-actions>
       <button
         mat-button
@@ -18,7 +18,7 @@
         matTooltip="Adicionar no pacote de download esta foto"
         aria-label="Botão para adicionar esta foto no pacote de download"
       >
-        <mat-icon [color]="photo.download ? 'accent' : 'primary'">download</mat-icon>
+        <mat-icon [color]="photo.downloaded ? 'accent' : 'primary'">download</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>

@@ -28,19 +28,19 @@ export class ClientHashComponent implements OnInit {
 
   setDownload(photoId) {
     const photo = this.tab.photos.find(p => p.id === photoId);
-    if (photo.download === false) {
+    if (photo.downloaded === false) {
       this.downloadCounter += 1;
     }
-    if (photo.download === true) {
+    if (photo.downloaded === true) {
       this.downloadCounter -= 1;
     }
-    photo.download = !photo.download;
+    photo.downloaded = !photo.downloaded;
   }
 
 
 
   download() {
-    const photosToDownload = this.tab.photos.filter(p => p.download);
+    const photosToDownload = this.tab.photos.filter(p => p.downloaded);
     // enviar para o servidor o pedido com as fotos
     // verificar no servidor se a quantidade é igual o downloadLimit da pasta
     // travar a pasta estabelecer lock = true ?? criar um middleware para checar essa trava de download;
