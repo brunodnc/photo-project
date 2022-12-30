@@ -3,14 +3,23 @@ package jpb.photoproject.classes;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "photographer")
 public class Photographer {
 
+    /**
+     * long
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     * string
+     */
 
     @Column(name = "name")
     private String name;
@@ -24,10 +33,14 @@ public class Photographer {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = Client.class, mappedBy = "client")
-    private ArrayList<Client> clients;
+    /**
+     * entity
+     */
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = Subscription.class)
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Client.class, mappedBy = "photographerID")
+    private List<Client> clients;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Subscription.class)
     @JoinColumn(name = "subscription", referencedColumnName = "id")
     private Subscription subscription;
 
@@ -71,11 +84,11 @@ public class Photographer {
         this.password = password;
     }
 
-    public ArrayList<Client> getClients() {
+    public List<Client> getClients() {
         return clients;
     }
 
-    public void setClients(ArrayList<Client> clients) {
+    public void setClients(List<Client> clients) {
         this.clients = clients;
     }
 

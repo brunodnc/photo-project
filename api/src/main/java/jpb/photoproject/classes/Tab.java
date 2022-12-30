@@ -1,37 +1,61 @@
 package jpb.photoproject.classes;
 
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tab")
 public class Tab {
 
+    /**
+     * long
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "client")
+    private long clientID;
 
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = Tab.class, mappedBy = "photo")
-    private ArrayList<Photo> photos;
-
-    @Column(name = "url")
-    private String url;
+    /**
+     * boolean
+     */
 
     @Column(name = "locked")
-    private Boolean locked;
+    private boolean locked;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "watermark")
+    private boolean watermark;
+
+    /**
+     * int
+     */
 
     @Column(name = "download_limit")
     private Integer downloadLimit;
 
-    @Column(name = "watermark")
-    private Boolean watermark;
+    /**
+     * string
+     */
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "url")
+    private String url;
+
+    @Column(name = "password")
+    private String password;
+
+    /**
+     * entity
+     */
+
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Photo.class, mappedBy = "tabID")
+    private List<Photo> photos;
 
     public Long getId() {
         return id;
@@ -41,44 +65,20 @@ public class Tab {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ArrayList<Photo> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(ArrayList<Photo> photos) {
-        this.photos = photos;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Boolean getLocked() {
+    public boolean isLocked() {
         return locked;
     }
 
-    public void setLocked(Boolean locked) {
+    public void setLocked(boolean locked) {
         this.locked = locked;
     }
 
-    public String getPassword() {
-        return password;
+    public boolean isWatermark() {
+        return watermark;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setWatermark(boolean watermark) {
+        this.watermark = watermark;
     }
 
     public Integer getDownloadLimit() {
@@ -89,11 +89,43 @@ public class Tab {
         this.downloadLimit = downloadLimit;
     }
 
-    public Boolean getWatermark() {
-        return watermark;
+    public long getClientID() {
+        return clientID;
     }
 
-    public void setWatermark(Boolean watermark) {
-        this.watermark = watermark;
+    public void setClientID(long clientID) {
+        this.clientID = clientID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 }

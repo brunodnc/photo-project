@@ -8,9 +8,36 @@ import java.util.Date;
 @Table(name = "photo")
 public class Photo {
 
+    /**
+     * long
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     * boolean
+     */
+
+    @Column(name = "watermark")
+    private boolean watermark;
+
+    @Column(name = "print")
+    private boolean print;
+
+    @Column(name = "downloaded")
+    private boolean downloaded;
+
+    /**
+     * int
+     */
+
+    @Column(name = "tab")
+    private long tabID;
+
+    /**
+     * string
+     */
 
     @Column(name = "file_name")
     private String fileName;
@@ -18,21 +45,12 @@ public class Photo {
     @Column(name = "path")
     private String path;
 
-    @Column(name = "watermark")
-    private Boolean watermark;
-
-    @Column(name = "print")
-    private Boolean print;
-
-    @Column(name = "download")
-    private Boolean downloaded;
+    /**
+     * date
+     */
 
     @Column(name = "created_at")
     private Date createdAt;
-
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Tab.class)
-    @JoinColumn(name = "tab", referencedColumnName = "id")
-    private Tab tab;
 
     public Long getId() {
         return id;
@@ -40,6 +58,38 @@ public class Photo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isWatermark() {
+        return watermark;
+    }
+
+    public void setWatermark(boolean watermark) {
+        this.watermark = watermark;
+    }
+
+    public boolean isPrint() {
+        return print;
+    }
+
+    public void setPrint(boolean print) {
+        this.print = print;
+    }
+
+    public boolean isDownloaded() {
+        return downloaded;
+    }
+
+    public void setDownloaded(boolean downloaded) {
+        this.downloaded = downloaded;
+    }
+
+    public long getTabID() {
+        return tabID;
+    }
+
+    public void setTabID(long tabID) {
+        this.tabID = tabID;
     }
 
     public String getFileName() {
@@ -58,43 +108,11 @@ public class Photo {
         this.path = path;
     }
 
-    public Boolean getWatermark() {
-        return watermark;
-    }
-
-    public void setWatermark(Boolean watermark) {
-        this.watermark = watermark;
-    }
-
-    public Boolean getPrint() {
-        return print;
-    }
-
-    public void setPrint(Boolean print) {
-        this.print = print;
-    }
-
-    public Boolean getDownloaded() {
-        return downloaded;
-    }
-
-    public void setDownloaded(Boolean downloaded) {
-        this.downloaded = downloaded;
-    }
-
     public Date getCreatedAt() {
         return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public Tab getTab() {
-        return tab;
-    }
-
-    public void setTab(Tab tab) {
-        this.tab = tab;
     }
 }

@@ -2,26 +2,35 @@ package jpb.photoproject.classes;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
 @Table(name = "client")
 public class Client {
 
-    @Id // indica que é a PK da tabela
-    @GeneratedValue(strategy = GenerationType.IDENTITY)// indica que a PK é auto increment, se der erro tentar com GenerationType.SEQUENCE, pois o banco pode usar alguma função especifica para criação de ID incremental
+    /**
+     * long
+     */
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")// mapeia a coluna com o atributo, existem outras opções para inserir na anotação
+    @Column(name = "photographer")
+    private long photographerID;
+
+    /**
+     * string
+     */
+
+    @Column(name = "name")
     private String name;
 
-    // @Transient// indica que esse atributo não existe no banco, caso contrário estoura erro
-    // private ArrayList<Tab> tabs; //
-
-    @OneToMany(fetch = FetchType.LAZY, targetEntity = Tab.class, mappedBy = "tab")
-    private ArrayList<Tab> tabs;
+    /**
+     * date
+     */
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -29,9 +38,13 @@ public class Client {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Photographer.class)//indica que é many to one e que é fetch LAZY, dessa forma o hibernate só irá buscar as relacoes quando solicitarmos
-    @JoinColumn(name = "photographer", referencedColumnName = "id")// indica quais colunas fazem parte da relação
-    private Photographer photographer;
+
+    /**
+     * entity
+     */
+
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Tab.class, mappedBy = "clientID")
+    private List<Tab> tabs;
 
     public Long getId() {
         return id;
@@ -41,20 +54,20 @@ public class Client {
         this.id = id;
     }
 
+    public long getPhotographerID() {
+        return photographerID;
+    }
+
+    public void setPhotographerID(long photographerID) {
+        this.photographerID = photographerID;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public ArrayList<Tab> getTabs() {
-        return tabs;
-    }
-
-    public void setTabs(ArrayList<Tab> tabs) {
-        this.tabs = tabs;
     }
 
     public Date getCreatedAt() {
@@ -73,11 +86,11 @@ public class Client {
         this.updatedAt = updatedAt;
     }
 
-    public Photographer getPhotographer() {
-        return photographer;
+    public List<Tab> getTabs() {
+        return tabs;
     }
 
-    public void setPhotographer(Photographer photographer) {
-        this.photographer = photographer;
+    public void setTabs(List<Tab> tabs) {
+        this.tabs = tabs;
     }
 }
