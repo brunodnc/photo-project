@@ -17,7 +17,7 @@ public class EntityManagerConfiguration {
             final EntityManagerFactoryBuilder entityManagerFactoryBuilder, final HikariDataSource hikariDataSource) {
 
         return entityManagerFactoryBuilder.dataSource(hikariDataSource)
-                .packages("jpb.photoproject.entidade")
+                .packages("jpb.photoproject.classes")
                 .build();
     }
 }

@@ -15,9 +15,9 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping(path="/client", produces = MimeTypeUtils.TEXT_PLAIN_VALUE)
+    @GetMapping(path = "/client", produces = MimeTypeUtils.TEXT_PLAIN_VALUE)
     public ResponseEntity<Client> get() {
-        System.out.println(this.clientService.recuperar());
+        System.out.println(this.clientService.findAll());
         return new ResponseEntity("Clientes recuperados", HttpStatus.OK);
     }
 
