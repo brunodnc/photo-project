@@ -1,13 +1,17 @@
 package jpb.photoproject.controller;
 
 import jpb.photoproject.classes.Client;
+import jpb.photoproject.dto.client.ResponseClientDTO;
+import jpb.photoproject.helper.ConverterHelper;
+import jpb.photoproject.helper.ResponseHelper;
 import jpb.photoproject.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ClientController {
@@ -15,10 +19,13 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping(path = "/client", produces = MimeTypeUtils.TEXT_PLAIN_VALUE)
-    public ResponseEntity<Client> get() {
-        System.out.println(this.clientService.findAll());
-        return new ResponseEntity("Clientes recuperados", HttpStatus.OK);
+    @GetMapping(path = "/client", produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ResponseClientDTO>> get() {
+
+        final List<Client> clients = this.clientService.findAll(true);
+        return ResponseHelper.ok(
+                ConverterHelper.list(clients, ResponseClientDTO.class)
+        );
     }
 
     @GetMapping(path = "/client/{photographerId}")
