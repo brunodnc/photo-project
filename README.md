@@ -10,25 +10,28 @@ to run containers just execute docker-compose-up at the docker-compose.yaml fold
 sudo docker-compose-up
 ```
 
+Remember if there is any change in the Dockerfiles or Docker-compose you need to run the command below to rebuild the containers
 
-access http://localhost:8080/ to manage database after container start
+```bash
+sudo docker-compose-up --build
+```
 
-```
-main database name: pp
-```
+
+access adminer at http://localhost:8080/ to manage database after container start
+
 TODO: check if dump is beign loaded on first container initialization
 
 
 
-to run only front-end for development enter app folder and run
+to run only front-end app for development execute at app folder after installing all depencies with npm install: 
 
-```
+```bash
 ng serve --open
 ```
 
 
-routes: 
-```
+routes to visit at app: 
+```bash
 /login
 /home
 /new-password
