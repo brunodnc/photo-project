@@ -6,19 +6,25 @@ import jpb.photoproject.classes.Client;
 import jpb.photoproject.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
 public class ClientDAO {
 
+    /**
+     * jpa
+     */
+    @Autowired
+    private ClientRepository clientRepository;
+
     @PersistenceContext
     private EntityManager em;
 
-    @Autowired
-    private ClientRepository clientRepo;
-
-    public List<Client> findAll(){
-        return this.clientRepo.findAll();
+    public List<Client> findAll() {
+        return this.clientRepository.findAll();
     }
 }

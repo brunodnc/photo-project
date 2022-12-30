@@ -2,26 +2,26 @@ package jpb.photoproject.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jpb.photoproject.classes.Tab;
-import jpb.photoproject.repository.TabRepository;
+import jpb.photoproject.classes.Photographer;
+import jpb.photoproject.repository.PhotographerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class TabDAO {
+public class PhotographerDAO {
 
     /**
      * jpa
      */
     @Autowired
-    private TabRepository tabRepository;
+    private PhotographerRepository photographerRepository;
 
     @PersistenceContext
     private EntityManager em;
 
-    public List<Tab> findAll() {
-        return this.tabRepository.findAll();
+    public List<Photographer> findAll() {
+        return this.photographerRepository.findAll();
     }
 }
