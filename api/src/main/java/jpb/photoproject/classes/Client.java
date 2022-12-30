@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 @Entity
 @Table(name = "client")
 public class Client {
@@ -16,8 +17,11 @@ public class Client {
     @Column(name = "name")// mapeia a coluna com o atributo, existem outras opções para inserir na anotação
     private String name;
 
-    @Transient// indica que esse atributo não existe no banco, caso contrário estoura erro
-    private ArrayList<String> tabs; // TODO: change to tabs
+    // @Transient// indica que esse atributo não existe no banco, caso contrário estoura erro
+    // private ArrayList<Tab> tabs; //
+
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Tab.class, mappedBy = "tab")
+    private ArrayList<Tab> tabs;
 
     @Column(name = "created_at")
     private Date createdAt;
@@ -27,7 +31,7 @@ public class Client {
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Photographer.class)//indica que é many to one e que é fetch LAZY, dessa forma o hibernate só irá buscar as relacoes quando solicitarmos
     @JoinColumn(name = "photographer", referencedColumnName = "id")// indica quais colunas fazem parte da relação
-    private Photographer photographer; // TODO: change to photographer
+    private Photographer photographer;
 
     public Long getId() {
         return id;
@@ -45,11 +49,11 @@ public class Client {
         this.name = name;
     }
 
-    public ArrayList<String> getTabs() {
+    public ArrayList<Tab> getTabs() {
         return tabs;
     }
 
-    public void setTabs(ArrayList<String> tabs) {
+    public void setTabs(ArrayList<Tab> tabs) {
         this.tabs = tabs;
     }
 
