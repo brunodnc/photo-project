@@ -1,8 +1,8 @@
-<!-- <h3> Nome: {{ user.name }}</h3>
-<h3> Número de clientes cadastrados: {{user.clients.length}}</h3>
-<h3> Capacidade de armazenamento: {{disk.totalSize - disk.size}}gb / {{disk.totalSize}}gb</h3> -->
- <!-- <button mat-button (click)="tooglePasswordChange()">Mudar senha</button> -->
-<!--<form [formGroup]="passwordChange" *ngIf="this.toggledPasswordChange">
+<h3> Nome: {{ user?.name }}</h3>
+<h3> Número de clientes cadastrados: {{user?.clients?.length}}</h3>
+<h3> Capacidade de armazenamento: {{user?.disk?.totalSize - user?.disk?.size}}gb / {{user?.disk?.totalSize}}gb</h3>
+<button mat-button (click)="tooglePasswordChange()">Mudar senha</button> -->
+<form [formGroup]="passwordChange" *ngIf="toggledPasswordChange">
     <mat-form-field>
         <mat-label>Senha antiga: </mat-label>
         <input matInput [formControlName]="this.passwordFC" type="password"> 
@@ -15,7 +15,7 @@
     <button mat-button (click)="changePassword()">Trocar senha</button>
     <div *ngIf="this.wrongPassword">Senha incorreta</div>
     <div *ngIf="this.success">Operação realizada com sucesso</div>
-</form> -->
+</form>
 
 <!-- Opção de mudar a marca d'água -->
 

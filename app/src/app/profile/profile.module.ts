@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile.component';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+
   ]
 })
 export class ProfileModule { }
