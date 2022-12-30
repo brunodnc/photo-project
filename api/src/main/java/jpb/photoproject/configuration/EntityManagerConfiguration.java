@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "jpb.photoproject.entidade.repository", entityManagerFactoryRef = "entityManager")
+@EnableJpaRepositories(basePackages = "jpb.photoproject.repository", entityManagerFactoryRef = "entityManager")
 public class EntityManagerConfiguration {
 
     @Bean

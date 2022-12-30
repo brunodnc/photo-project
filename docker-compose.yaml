@@ -41,6 +41,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=photoproject-password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - crossOrigin=http://localhost:4200
+      - spring.jpa.open-in-view=false
       - hikari.driverClassName=org.postgresql.Driver
       - hikari.jdbcUrl=jdbc:postgresql://photoproject-db:5432/
       - hikari.username=photoproject-username
