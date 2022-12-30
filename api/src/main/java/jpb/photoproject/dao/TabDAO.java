@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ClienteDAO {
+public class TabDAO {
 
     @PersistenceContext
     private EntityManager em;
 
     public List<Object> recuperarTodos() {
-        return this.em.createNativeQuery("SELECT * FROM client").getResultList();
+        return this.em.createNativeQuery("SELECT * FROM tab").getResultList();
     }
 }
