@@ -15,6 +15,7 @@ import { HomeModule } from "./home/home.module";
 import { LoginModule } from "./login/login.module";
 import { NewPasswordModule } from "./newpassword/new-password.module";
 import { SafePipe } from "./pipe/sanitizer-pipe";
+import { ProfileModule } from "./profile/profile.module";
 import { RegisterModule } from "./register/register.module";
 
 @NgModule({
@@ -33,7 +34,8 @@ import { RegisterModule } from "./register/register.module";
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    HeaderModule
+    HeaderModule,
+    ProfileModule
   ],
   bootstrap: [AppComponent],
   providers: [

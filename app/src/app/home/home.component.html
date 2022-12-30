@@ -7,7 +7,7 @@
         <!-- colocar css cursor:pointer; no mat-list-item -->
         <mat-icon mat-list-icon>folder</mat-icon>
         <div mat-line>{{client.name}}</div>
-        <div mat-line>{{client.creation | date}}</div>
+        <div mat-line>{{client.createdAt | date}}</div>
     </mat-list-item>
     <mat-list-item (click)="newClient()">
         <mat-icon mat-list-icon>note_add</mat-icon>

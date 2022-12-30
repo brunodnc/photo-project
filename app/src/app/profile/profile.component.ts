@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { IPhotographer } from "../interfaces";
 
 @Component({
   selector: "app-profile",
@@ -12,6 +13,8 @@ export class ProfileComponent implements OnInit {
   public toggledPasswordChange = false;
   public wrongPassword = false;
   public success = false;
+
+  public user: IPhotographer
 
   public passwordChange = new FormGroup({
     [this.passwordFC]: new FormControl(null, [Validators.required], []),

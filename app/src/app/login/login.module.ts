@@ -20,7 +20,6 @@ import { LoginComponent } from "./login.component";
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatDatepickerModule,
   ],
   exports: [LoginComponent],
 })

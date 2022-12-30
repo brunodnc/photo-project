@@ -1,5 +1,16 @@
 import { InjectionToken } from "@angular/core";
 
+export interface IPhoto {
+  id?: number;
+  file_name: string;
+  path: string;
+  watermark: boolean;
+  print: boolean;
+  downloaded: boolean;
+  createdAt: Date;
+  tab: string;
+}
+
 export interface ITab {
   id?: number;
   name: string;
@@ -11,24 +22,14 @@ export interface ITab {
   watermark: boolean;
 }
 
-export interface IPhoto {
-  id?: number;
-  file_name: string;
-  path: string;
-  watermark: boolean;
-  print: boolean;
-  downloaded: boolean;
-  created_at: Date;
-  tab: string;
-}
-
 export interface IClient {
   id?: number;
   name: string;
   tabs?: ITab[];
-  creation?: Date;
-  update?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   photographer?: IPhotographer
+
 }
 
 export interface IPhotographer {
@@ -39,7 +40,7 @@ export interface IPhotographer {
   password?: string;
   clients?: IClient[];
   subscription: string;
-
+  disk?: { size: number, totalSize: number };
 }
 
 export interface ISubscription {
