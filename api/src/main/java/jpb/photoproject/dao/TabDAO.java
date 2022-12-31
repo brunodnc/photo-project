@@ -24,4 +24,6 @@ public class TabDAO {
     public List<Tab> findAll() {
         return this.tabRepository.findAll();
     }
+
+    public Tab postTab(Tab tab) { return this.tabRepository.save(tab); }
 }

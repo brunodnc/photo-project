@@ -20,4 +20,6 @@ public class TabService {
     public List<Tab> findAll() {
         return this.tabDAO.findAll();
     }
+
+    public Tab postTab(Tab tab) { return this.tabDAO.postTab(tab); }
 }

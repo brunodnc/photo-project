@@ -27,4 +27,10 @@ public class ClientDAO {
     public List<Client> findAll() {
         return this.clientRepository.findAll();
     }
+
+    public List<Client> findAllByPhotographerId(Long photographerId) { return this.clientRepository.findAll(// query
+      );
+    }
+
+    public Client postClient(Client client) { return this.clientRepository.save(client); }
 }
