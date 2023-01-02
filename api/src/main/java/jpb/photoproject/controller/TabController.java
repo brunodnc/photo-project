@@ -22,7 +22,7 @@ public class TabController {
     @GetMapping(path = "/tab/{clientId}")
     public ResponseEntity<List<ResponseTabDTO>> GetTabsByClientid(@PathVariable Long clientId) {
 
-        List<Tab> tabs = this.tabService.findAll();
+        List<Tab> tabs = this.tabService.findByClientId(clientId);
 
         return ResponseHelper.ok(ConverterHelper.list(tabs, ResponseTabDTO.class));
     }
