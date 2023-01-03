@@ -20,4 +20,10 @@ public class TabService {
     public List<Tab> findAll() {
         return this.tabDAO.findAll();
     }
+
+    public Tab findById(Long id) { return this.tabDAO.findById(id); }
+
+    public Tab postTab(Tab tab) { return this.tabDAO.postTab(tab); }
+
+    public List<Tab> findByClientId(Long clientId) { return this.tabDAO.findByClientId(clientId); }
 }

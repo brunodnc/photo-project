@@ -1,6 +1,7 @@
 package jpb.photoproject.controller;
 
 import jpb.photoproject.classes.Client;
+import jpb.photoproject.dto.client.RequestClientDTO;
 import jpb.photoproject.dto.client.ResponseClientDTO;
 import jpb.photoproject.helper.ConverterHelper;
 import jpb.photoproject.helper.ResponseHelper;
@@ -29,18 +30,28 @@ public class ClientController {
     }
 
     @GetMapping(path = "/client/{photographerId}")
-    public ResponseEntity<Client> GetClientsByPhotographerId(@PathVariable Long photographerId) {
-        // System.out.println(this.clientService.recuperar());
+    public ResponseEntity<List<ResponseClientDTO>> GetClientsByPhotographerId(@PathVariable Long photographerId) {
 
-        return new ResponseEntity<>(null);
+        final List<Client> clients = this.clientService.findAllByPhotographerId(true, photographerId);
+
+        return ResponseHelper.ok(
+                ConverterHelper.list(clients, ResponseClientDTO.class)
+        );
     }
 
     @PostMapping(path = "/client/")
-    public ResponseEntity<Client> PostClient(@RequestBody Client client) {
-        // needs to check for client name here?
+    public ResponseEntity<ResponseClientDTO> PostClient(@RequestBody RequestClientDTO requestClient) {
+
+        // CHECK: Conversion to entity here?
+
+        Client clientEntity = ConverterHelper.converts(requestClient, Client.class);
+
         // send client to service for creation
+        final Client newClient = this.clientService.postClient(clientEntity);
         // sets response as created Client
 
-        return new ResponseEntity<>(HttpStatusCode.valueOf(201));
+        return ResponseHelper.ok(
+                ConverterHelper.converts(newClient, ResponseClientDTO.class)
+        );
     }
 }
