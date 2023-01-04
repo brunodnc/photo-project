@@ -1,40 +1,33 @@
-<!-- REACTIVE FORMS MODULE -->
-
-<h1>Faça seu login:</h1>
-<form [formGroup]="loginForm" class="login-form">
-  <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Usuário</mat-label>
-    <input matInput type="text" id="username" [formControlName]="usernameFC"/>
-    <mat-error *ngIf="loginForm.get(usernameFC).hasError('unregistered')">
-      Usuário não cadastrado
-    </mat-error>
-    <mat-error *ngIf="loginForm.get(usernameFC).errors?.['required']">
-      Campo obrigatório
-    </mat-error>  
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Senha</mat-label>
-    <input matInput type="password" id="password" [formControlName]="passwordFC" />
-    <mat-error *ngIf="loginForm.get(passwordFC).errors?.['required']">
-      Campo obrigatório
-    </mat-error>  
-  </mat-form-field>
-  <button mat-flat-button type="submit" [disabled]="loginForm.invalid" (click)="login()">Entrar</button>
-</form>
-<a mat-button routerLink="/new-password">Esqueci minha senha</a>
-<a mat-button routerLink="/register">Registrar conta</a>
-
-<!-- FORMS MODULE  -->
-<!-- outra forma de fazer formulário no angular -->
-<!-- <h2>Atributos</h2>
-
-<form #form="ngForm">
-  <label>Força</label>
-  <input type="number" name="forca" [(ngModel)]="atributos.forca" min="1" max="255" #inputForca="ngModel" />
-  <div *ngIf="inputForca.dirty">Input alterado</div>
-  <label>Vitalidade</label>
-  <input type="number" name="vitalidade" [(ngModel)]="atributos.vitalidade" min="1" max="255" #inputVitalidade="ngModel" />
-  <div *ngIf="inputVitalidade.dirty">Input alterado</div> -->
-  <!-- <button [disabled]="form.invalid" (click)="loginFormsModule(form)">Login</button> -->
-  <!-- <button [disabled]="form.invalid" (click)="loginFormsModule()">Login</button>
-</form> -->
+<main>
+  <div class="top-background">
+    <img src="/assets/img/background/photography2.jpg" alt="photography.jpg" />
+  </div>
+  <section>
+    <h1>Login</h1>
+    <div class="login-container">
+      <form [formGroup]="loginForm">
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Usuário"
+          [formControlName]="usernameFC"
+          ngbTooltip="Tooltip on top"
+        />
+        <input
+          type="password"
+          autocomplete="false"
+          id="password"
+          class="form-control"
+          placeholder="Senha"
+          [formControlName]="passwordFC"
+        />
+        <button type="submit" class="btn btn-outline-success" [disabled]="loginForm.invalid" (click)="login()">Entrar</button>
+      </form>
+      <div class="options">
+        <a routerLink="/new-password" class="btn btn-link text-warning">Esqueci minha senha</a>
+        <a routerLink="/register" class="btn btn-link text-info">Registrar conta</a>
+      </div>
+    </div>
+  </section>
+</main>
