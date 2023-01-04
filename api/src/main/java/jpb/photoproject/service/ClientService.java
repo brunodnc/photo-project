@@ -33,7 +33,7 @@ public class ClientService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true, isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
     public List<Client> findAllByPhotographerId(final boolean lazyLoad, Long photographerId) {
-        final List<Client> clients = this.clientDAO.findAllByPhotographerId(photographerId);
+        final List<Client> clients = this.clientDAO.findByPhotographerId(photographerId);
         if (lazyLoad) HibernateHelper.initializeAll(clients);
         else HibernateHelper.clearAllLazy(clients);
         return clients;
