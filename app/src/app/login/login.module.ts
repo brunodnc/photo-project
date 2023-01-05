@@ -5,12 +5,11 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { RouterModule } from "@angular/router";
-import { InputLoginComponent } from "./input-login";
 
 import { LoginComponent } from "./login.component";
 
 @NgModule({
-  declarations: [LoginComponent, InputLoginComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     RouterModule,

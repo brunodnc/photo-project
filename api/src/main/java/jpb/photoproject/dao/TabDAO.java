@@ -25,9 +25,15 @@ public class TabDAO {
         return this.tabRepository.findAll();
     }
 
-    public Tab findById(Long id) { return this.tabRepository.findById(id); }
+    public Tab findById(Long id) {
+        return this.tabRepository.findById(id).orElse(null);
+    }
 
-    public List<Tab> findByClientId(Long clientId) { return this.tabRepository.findByClientId(id); }
+    public List<Tab> findByClientId(Long clientId) {
+        return this.tabRepository.findByClientID(clientId);
+    }
 
-    public Tab postTab(Tab tab) { return this.tabRepository.save(tab); }
+    public Tab postTab(Tab tab) {
+        return this.tabRepository.save(tab);
+    }
 }

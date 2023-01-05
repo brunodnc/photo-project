@@ -12,7 +12,7 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
 
-    List<Client> findByPhotographerId(Long photographerId);
+    List<Client> findByPhotographerID(Long photographerId);
 
 
     //REPOSITÓRIOS SÃO INTERFACES QUE SÃO INJETADAS COM ALGUMAS IMPLEMENTAÇÕES
