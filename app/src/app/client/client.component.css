@@ -1,0 +1,11 @@
+.client-tabs {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-tab {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+}

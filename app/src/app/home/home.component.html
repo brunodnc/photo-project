@@ -1,13 +1,13 @@
 
 <mat-list>
     <h2 mat-subheader>Clientes</h2>
+    
     <mat-list-item *ngFor="let client of clients" [routerLink]="'/client/' + client.id">
-        <!-- como colocar o link para acessar o cliente no mat-list-item??? -->
-        <!-- colocar (click) no mat-list-item -->
-        <!-- colocar css cursor:pointer; no mat-list-item -->
+        <!-- TODO: colocar css cursor:pointer; no mat-list-item -->
         <mat-icon mat-list-icon>folder</mat-icon>
         <div mat-line>{{client.name}}</div>
         <div mat-line>{{client.createdAt | date}}</div>
+        <mat-icon (click)="deleteClient()">delete_forever</mat-icon>
     </mat-list-item>
     <mat-list-item (click)="newClient()">
         <mat-icon mat-list-icon>note_add</mat-icon>

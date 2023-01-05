@@ -1,3 +1,10 @@
 .mat-list-icon {
     color: rgba(0, 0, 0, 0.54);
   }
+
+.mat-list {
+  background-color: yellow;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 70%;
+}

@@ -1,68 +1,74 @@
-<div>
-  <button mat-raised-button class="example-add-tab-button" (click)="addTab()">Adicionar novo Álbum de fotos</button>
-</div>
-<h1> Lembre-se de salvar qualquer modificação</h1>
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab.name">
-    <button mat-raised-button>Carregue fotos para esta pasta</button>
-    <!-- fazer logica do upload -->
-    <mat-card *ngFor="let photo of tab.photos">
-      <mat-card-header>{{ photo.name }}</mat-card-header>
-      <mat-card-subtitle>{{ photo.date | date }}</mat-card-subtitle>
-      <img mat-card-image [src]="photo.path" [alt]="photo.name" />
-      <mat-card-actions>
-        <mat-icon *ngIf="photo.print">print</mat-icon>
-        <button
-          mat-button
-          (click)="setWatermark(photo.id, tab.id)"
-          matTooltip="Adicionar ou remover marca d'água"
-          aria-label="Botão para adicionar ou remover marca d'água"
-        >
-          <mat-icon [color]="photo.watermark ? 'primary' : 'secundary'">fingerprint</mat-icon>
-        </button>
-        <button
-          mat-button
-          (click)="deletePhoto(photo.id, tab.id)"
-          matTooltip="Deletar esta foto"
-          aria-label="Botão para deletar esta foto"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-    <hr>
-    <h2>Configurações da pasta {{tab.name}}</h2>
-    <button mat-raised-button (click)="generateLink()" [value]="tab.link">
-      Salvar pasta e gerar link para o cliente
-    </button>
-    <input type="text" [value]="tab.link" />
-    <button mat-button (click)="setAllWatermark(tab.id)">
-      Adicionar marca d'agua em todas as fotos <mat-icon>font_download</mat-icon>
-    </button>
+<ng-container class="client-tabs">
+  
+  <div class="add-tab">
+    <button mat-raised-button class="example-add-tab-button" (click)="addTab()">Adicionar novo Álbum de fotos</button>
+    <mat-hint> Lembre-se de salvar qualquer modificação</mat-hint>
+  </div>
+  
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab.name">
+      <button mat-raised-button>Carregue fotos para esta pasta</button>
+      <!-- fazer logica do upload -->
+      <mat-card *ngFor="let photo of tab.photos">
+        <mat-card-header>{{ photo.name }}</mat-card-header>
+        <mat-card-subtitle>{{ photo.date | date }}</mat-card-subtitle>
+        <img mat-card-image [src]="photo.path" [alt]="photo.name" />
+        <mat-card-actions>
+          <mat-icon *ngIf="photo.print">print</mat-icon>
+          <button
+            mat-button
+            (click)="setWatermark(photo.id, tab.id)"
+            matTooltip="Adicionar ou remover marca d'água"
+            aria-label="Botão para adicionar ou remover marca d'água"
+          >
+            <mat-icon [color]="photo.watermark ? 'primary' : 'secundary'">fingerprint</mat-icon>
+          </button>
+          <button
+            mat-button
+            (click)="deletePhoto(photo.id, tab.id)"
+            matTooltip="Deletar esta foto"
+            aria-label="Botão para deletar esta foto"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <hr>
+      <h2>Configurações da pasta {{tab.name}}</h2>
+      <button mat-raised-button (click)="generateLink()" [value]="tab.link">
+        Salvar pasta e gerar link para o cliente
+      </button>
+      <input type="text" [value]="tab.link" />
+      <button mat-button (click)="setAllWatermark(tab.id)">
+        Adicionar marca d'agua em todas as fotos <mat-icon>font_download</mat-icon>
+      </button>
 
-    <button mat-raised-button class="example-delete-tab-button" [disabled]="tabs.length === 1" (click)="dialogToggle()">
-      Deletar pasta
-    </button>
-    <div *ngIf="openDialog">
-      <h3>Você tem certeza que quer deletar esta pasta?</h3>
-      <button mat-button (click)="removeTab(index)">Sim</button><button mat-button (click)="dialogToggle()">Não</button>
-    </div>
-    <div *ngIf="tab.locked === false">
-      <h3>Tranque esta pasta com uma senha</h3>
-      <mat-form-field appearance="fill">
-        <mat-label>Senha para o cliente: </mat-label>
-        <input matInput type="password" [(ngModel)]="tabPassword" required />
-        <mat-hint>Insira uma senha para seu cliente conseguir abrir esta pasta</mat-hint>
-        <button (click)="lockTab(tab.id)">Trancar pasta <mat-icon>lock</mat-icon></button>
-      </mat-form-field>
-    </div>
-    <div *ngIf="tab.locked === true">
-      Esta pasta está trancada com a senha:
-      {{ tab.pwd }}
-      Seu cliente só conseguirá acessar esta pasta mediante inserção da senha acima.
-      <button (click)="lockTab(tab.id)">Destrancar pasta <mat-icon>lock_open</mat-icon></button>
-    </div>
-  </mat-tab>
-</mat-tab-group>
-<button mat-button (click)="save()">SALVAR AS MODIFICAÇÕES EM TODAS AS PASTAS</button>
+      <button mat-raised-button class="example-delete-tab-button" [disabled]="tabs.length === 1" (click)="dialogToggle()">
+        Deletar pasta
+      </button>
+      <div *ngIf="openDialog">
+        <h3>Você tem certeza que quer deletar esta pasta?</h3>
+        <button mat-button (click)="removeTab(index)">Sim</button><button mat-button (click)="dialogToggle()">Não</button>
+      </div>
+      <div *ngIf="tab.locked === false">
+        <h3>Tranque esta pasta com uma senha</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Senha para o cliente: </mat-label>
+          <input matInput type="password" [(ngModel)]="tabPassword" required />
+          <mat-hint>Insira uma senha para seu cliente conseguir abrir esta pasta</mat-hint>
+          <button (click)="lockTab(tab.id)">Trancar pasta <mat-icon>lock</mat-icon></button>
+        </mat-form-field>
+      </div>
+      <div *ngIf="tab.locked === true">
+        Esta pasta está trancada com a senha:
+        {{ tab.pwd }}
+        Seu cliente só conseguirá acessar esta pasta mediante inserção da senha acima.
+        <button (click)="lockTab(tab.id)">Destrancar pasta <mat-icon>lock_open</mat-icon></button>
+      </div>
+    </mat-tab>
+    <mat-tab (click)="addTab()" [label]="'+'"></mat-tab>
+  </mat-tab-group>
+
+  <button mat-button (click)="save()">SALVAR AS MODIFICAÇÕES EM TODAS AS PASTAS</button>
 <!-- se salvar gerar um alerta -->
+</ng-container>

@@ -1,0 +1,18 @@
+header {
+    right: 0;
+    display:flex;
+    width: 100vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+nav {
+    padding: 1rem;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+}
+

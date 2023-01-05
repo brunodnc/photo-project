@@ -1,7 +1,8 @@
 <!-- Se o usuário está logado... se não, redirecionar para a tela de login -->
 <header>
-    <h1>{{user.name}}</h1>
+    <h1>Photo Project</h1>
     <nav>
+        <a>{{user.name || "@username"}}</a>
         <a mat-button routerLink="/home">Página Inicial</a>
         <a mat-button routerLink="/profile">Meu Perfil</a>
     </nav>

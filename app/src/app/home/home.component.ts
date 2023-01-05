@@ -51,4 +51,8 @@ newClientForm = new FormGroup({
     // send new client to db,
     // update this tab's client list
   }
+
+  deleteClient() {
+    
+  }
 }
