@@ -22,6 +22,11 @@ access adminer at http://localhost:8080/ to manage database after container star
 TODO: check if dump is beign loaded on first container initialization
 
 
+when docker compose is up
+access back-end routes at http://localhost:8999/api
+access front-end routes at http://localhost:9000/
+
+
 
 to run only front-end app for development execute at app folder after installing all depencies with npm install: 
 

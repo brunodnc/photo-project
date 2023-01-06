@@ -35,6 +35,8 @@ services:
     restart: "no"
     depends_on:
       - db
+    ports:
+      - 8999:9000
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://photoproject-db:5432/
       - SPRING_DATASOURCE_USERNAME=photoproject-username
