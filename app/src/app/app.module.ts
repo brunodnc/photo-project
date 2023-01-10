@@ -1,3 +1,4 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateModule } from "@angular/material/core";
@@ -13,7 +14,6 @@ import { MudaHtml } from "./directive/muda-html";
 import { HeaderModule } from "./header/header.module";
 import { HomeModule } from "./home/home.module";
 import { LoginModule } from "./login/login.module";
-import { NewPasswordModule } from "./newpassword/new-password.module";
 import { SafePipe } from "./pipe/sanitizer-pipe";
 import { ProfileModule } from "./profile/profile.module";
 import { RegisterModule } from "./register/register.module";
@@ -24,7 +24,6 @@ import { RegisterModule } from "./register/register.module";
     BrowserModule,
     AppRoutingModule,
     LoginModule,
-    NewPasswordModule,
     RegisterModule,
     HomeModule,
     HeaderModule,
@@ -35,7 +34,8 @@ import { RegisterModule } from "./register/register.module";
     ReactiveFormsModule,
     MatInputModule,
     HeaderModule,
-    ProfileModule
+    ProfileModule,
+    HttpClientModule,
   ],
   bootstrap: [AppComponent],
   providers: [

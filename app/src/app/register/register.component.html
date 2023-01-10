@@ -1,37 +1,36 @@
 <h2>Cadastro de fotógrafo</h2>
 <form [formGroup]="registerForm">
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Nome completo: </mat-label>
-    <input matInput type="text" [formControlName]="nameFC" />
-    <mat-hint>Não será possível mudar o nome depois de cadastrado</mat-hint>
+    <input matInput id="name" class="form-control" placeholder="Nome completo" type="text" [formControlName]="nameFC" />
+    <mat-hint>Por enquanto não será possível mudar o nome depois de cadastrado</mat-hint>
     <mat-error *ngIf="this.registerForm.get(nameFC).hasError('required')">Preencha este campo</mat-error>
   </mat-form-field>
-  <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Email: </mat-label>
-    <input matInput type="email" [formControlName]="emailFC" />
-    <mat-hint>Não será possível mudar o email depois de cadastrado</mat-hint>
-    <mat-error *ngIf="this.registerForm.get(emailFC).hasError('required')">Preencha este campo</mat-error>
-    <mat-error *ngIf="this.registerForm.get(emailFC).hasError('email')">Insira um email válido neste campo</mat-error>
-  </mat-form-field>
-  <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Nome de usuário: </mat-label>
-    <input matInput type="password" [formControlName]="passwordFC" />
-    <mat-hint>8 a 20 caracteres, sem caracteres especiais (Você utilizará este nome de usuário para fazer login no site)</mat-hint>
-    <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('required')">Preencha este campo</mat-error>
-    <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('pattern')">Insira um nome de usuário válido</mat-error>
-  </mat-form-field>
-  <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Senha: </mat-label>
-    <input matInput type="password" [formControlName]="passwordFC" />
-    <mat-hint>8 a 20 caracteres, com ao menos um caracteres especial, número, letra maíuscula e minúscula</mat-hint>
-    <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('required')">Preencha este campo</mat-error>
-    <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('pattern')">Insira uma senha válida</mat-error>
-  </mat-form-field>
-  <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Repetir Senha: </mat-label>
-    <input matInput type="password" [formControlName]="password2FC" />
-    <mat-error *ngIf="this.registerForm.get(password2FC).hasError('required')">Preencha este campo</mat-error>
-    <mat-error *ngIf="this.registerForm.get(password2FC).hasError('differentPassword')">As senhas devem ser iguais</mat-error>
-  </mat-form-field>
+
+  <mat-label>Email: </mat-label>
+  <input id="email" class="form-control" placeholder="Email" type="email" [formControlName]="emailFC" />
+  <mat-hint>Não será possível mudar o email depois de cadastrado</mat-hint>
+  <mat-error *ngIf="this.registerForm.get(emailFC).hasError('required')">Preencha este campo</mat-error>
+  <mat-error *ngIf="this.registerForm.get(emailFC).hasError('email')">Insira um email válido neste campo</mat-error>
+  
+  <mat-label>Nome de usuário: </mat-label>
+  <input id="username" class="form-control" placeholder="Nome de usuário" type="password" [formControlName]="usernameFC" />
+  <mat-hint>8 a 20 caracteres, sem caracteres especiais (Você utilizará este nome de usuário para fazer login no site)</mat-hint>
+  <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('required')">Preencha este campo</mat-error>
+  <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('pattern')">Insira um nome de usuário válido</mat-error>
+  
+  <mat-label>Senha: </mat-label>
+  <input id="password" class="form-control" placeholder="Senha" type="password" [formControlName]="passwordFC" />
+  <mat-hint>8 a 20 caracteres, com ao menos um caracteres especial, número, letra maíuscula e minúscula</mat-hint>
+  <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('required')">Preencha este campo</mat-error>
+  <mat-error *ngIf="this.registerForm.get(passwordFC).hasError('pattern')">Insira uma senha válida</mat-error>
+  
+  <mat-label>Repetir Senha: </mat-label>
+  <input id="password2" class="form-control" placeholder="Digite sua senha novamente para confirmação" type="password" [formControlName]="password2FC" />
+  <mat-error *ngIf="this.registerForm.get(password2FC).hasError('required')">Preencha este campo</mat-error>
+  <mat-error *ngIf="this.registerForm.get(password2FC).hasError('differentPassword')">As senhas devem ser iguais</mat-error>
+
 </form>
-<button mat-button type="button" disabled="registerForm.invalid" (click)="register()">Cadastrar</button>
+
+<button type="submit" class="btn btn-outline-success" (click)="register()">Cadastrar</button>

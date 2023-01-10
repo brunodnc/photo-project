@@ -39,7 +39,7 @@ export interface IPhotographer {
   email: string;
   password?: string;
   clients?: IClient[];
-  subscription: string;
+  subscription?: string;
   disk?: { size: number, totalSize: number };
 }
 
