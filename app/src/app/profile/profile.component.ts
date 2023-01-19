@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { IPhotographer } from "../interfaces";
+import { PhotographerService } from "../services/photographer-service";
 
 @Component({
   selector: "app-profile",
@@ -21,10 +22,15 @@ export class ProfileComponent implements OnInit {
     [this.newPasswordFC]: new FormControl(null, [Validators.required], []),
   });
 
-  constructor() {}
+  constructor(
+    private photographerSrv: PhotographerService,
+  ) {}
 
   ngOnInit(): void {
     // get username, get user.clients.length, get disk total size, get disk size
+    // const photographerId = get photographer id from login service
+    // this.user = this.photographerSrv.get(photographerId)
+    
   }
 
   tooglePasswordChange() {

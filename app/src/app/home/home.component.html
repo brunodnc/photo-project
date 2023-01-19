@@ -2,7 +2,7 @@
 <mat-list>
     <h2 mat-subheader>Clientes</h2>
     
-    <mat-list-item *ngFor="let client of clients" [routerLink]="'/client/' + client.id">
+    <mat-list-item *ngFor="let client of clients$ | async" [routerLink]="'/client/' + client.id">
         <!-- TODO: colocar css cursor:pointer; no mat-list-item -->
         <mat-icon mat-list-icon>folder</mat-icon>
         <div mat-line>{{client.name}}</div>
@@ -23,5 +23,5 @@
         <mat-hint>Não será possível mudar o nome depois de cadastrado</mat-hint>
         <mat-error *ngIf="this.newClientForm.get(clientNameFC).hasError('required')">Preencha este campo</mat-error>
     </mat-form-field>
-    <button mat-button type="button" disabled="newClientForm.invalid" (click)="registerNewClient()">Cadastrar novo cliente</button>
+    <button mat-button type="submit" [disabled]="newClientForm.invalid" (click)="registerNewClient()">Cadastrar novo cliente</button>
 </form>

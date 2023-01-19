@@ -34,3 +34,5 @@
 </form>
 
 <button type="submit" class="btn btn-outline-success" (click)="register()">Cadastrar</button>
+
+<ng-template *ngIf="newPhotographer$ | async as photographer" > {{photographer.name}} created </ng-template>

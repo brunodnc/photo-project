@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from "@angular/forms";
+import { map, Observable } from "rxjs";
 import { IPhotographer } from "../interfaces";
 import { PhotographerService } from "../services/photographer-service";
 
@@ -41,6 +42,8 @@ export class RegisterComponent implements OnInit {
     }),
   });
 
+  newPhotographer$: Observable<IPhotographer>;
+
   constructor(private photographerService: PhotographerService) {}
 
   ngOnInit() {}
@@ -56,7 +59,7 @@ export class RegisterComponent implements OnInit {
     const photographer: IPhotographer = {
       name, email, username, password 
     }
-    this.photographerService.post(photographer)    
-    this.registered = true;
+    this.newPhotographer$ = this.photographerService.post(photographer);
+    
   };
 }

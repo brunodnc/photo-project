@@ -1,6 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Observable, of } from "rxjs";
 import { IClient } from "../interfaces";
+import { ClientService } from "../services/client-service";
 
 @Component({
   selector: "app-home",
@@ -11,34 +13,27 @@ export class HomeComponent implements OnInit {
   clicked: boolean;
 
   clientNameFC = 'name'
-  clients: IClient[] = [
+  clients$: Observable<IClient[]> = of([
     { 
       id: 1,
       name: "oiee",
       createdAt: new Date(),
     },
-  ];
+  ])
 
-newClientForm = new FormGroup({
-  [this.clientNameFC]: new FormControl(null, [Validators.required], [])
-})
+  // photographerId should come from login service
+  photographerId = 1;
 
-  constructor() {}
+  newClientForm = new FormGroup({
+    [this.clientNameFC]: new FormControl(null, [Validators.required], [])
+  })
 
-  async getClients(): Promise<IClient[]> {
-    // const clientList = await fetch();
-    return [
-      {
-        id: 2,
-        name: "oi",
-        createdAt: new Date(),
-      },
-    ];
-  }
+  constructor(private clientSrv: ClientService) {}
 
   ngOnInit(): void {
     // fetch clients
-    this.getClients().then((data) => (this.clients = data));
+    this.clients$ = this.clientSrv.getAll(this.photographerId)
+   
   }
 
   currentTime = (): Date => new Date();
@@ -49,7 +44,9 @@ newClientForm = new FormGroup({
 
   registerNewClient() {
     // send new client to db,
-    // update this tab's client list
+    const newClient$ = this.clientSrv.post({name: this.newClientForm.get(this.clientNameFC).value});
+    // update this tab's client list.... how to load only the missing one instead of all the clients again ???
+    this.clients$ = this.clientSrv.getAll(this.photographerId)
   }
 
   deleteClient() {
