@@ -44,3 +44,10 @@ routes to visit at app:
 /profile
 /client/1
 ```
+
+
+routes that "works" at app and calls api
+```bash
+/Photographer/postPhotographer -> registers photographer
+
+```
