@@ -1,15 +1,15 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatCardModule } from "@angular/material/card";
+import { MatLegacyTabsModule as MatTabsModule } from "@angular/material/legacy-tabs";
+import { MatLegacyCardModule as MatCardModule } from "@angular/material/legacy-card";
 import { MatIconModule } from "@angular/material/icon";
-import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatLegacyTooltipModule as MatTooltipModule } from "@angular/material/legacy-tooltip";
 import { ClientComponent } from "./client.component";
 import { RouterModule, Routes } from "@angular/router";
-import { MatInputModule } from "@angular/material/input";
+import { MatLegacyInputModule as MatInputModule } from "@angular/material/legacy-input";
 import { FormsModule } from "@angular/forms";
 import { ClientHashComponent } from "./client-hash/client-hash.component";
-import { MatButtonModule } from "@angular/material/button";
+import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
 
 const routes: Routes = [
   {

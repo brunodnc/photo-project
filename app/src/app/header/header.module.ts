@@ -1,9 +1,9 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { MatButtonModule } from "@angular/material/button";
-import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatTableModule } from "@angular/material/table";
+import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
+import { MatLegacyPaginatorModule as MatPaginatorModule } from "@angular/material/legacy-paginator";
+import { MatLegacyTableModule as MatTableModule } from "@angular/material/legacy-table";
 import { RouterModule } from "@angular/router";
 import { HeaderComponent } from "./header.component";
 
