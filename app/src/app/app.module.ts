@@ -1,10 +1,10 @@
 import { HttpClientModule } from "@angular/common/http";
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateModule } from "@angular/material/core";
+import { NativeDateModule } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatLegacyFormFieldModule as MatFormFieldModule } from "@angular/material/legacy-form-field";
-import { MatLegacyInputModule as MatInputModule } from "@angular/material/legacy-input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -29,8 +29,7 @@ import { RegisterModule } from "./register/register.module";
     // ManagerComponent,
     // AdminComponent,
   ],
-  imports: [
-    BrowserModule,
+  imports: [ BrowserModule,
     AppRoutingModule,
     KeycloakAngularModule,
     LoginModule,
@@ -46,7 +45,6 @@ import { RegisterModule } from "./register/register.module";
     HeaderModule,
     ProfileModule,
     HttpClientModule,
-   
   ],
   bootstrap: [AppComponent],
   providers: [
