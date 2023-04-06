@@ -50,6 +50,12 @@ services:
       - hikari.password=photoproject-password
       - hikari.minimumIdle=3
       - hikari.maximumPoolSize=10
+      - keycloak.realm=mainrealm
+      - keycloak.auth-server-url=http://127.0.0.1:8081
+      - keycloak.ssl-required=external
+      - keycloak.resource=demoapp
+      - keycloak.credentials.secret=11111111-1111-1111-1111-111111111111
+      - keycloak.use-resource-role-mappings=true
 
   app:
     build:
@@ -63,6 +69,32 @@ services:
     depends_on:
     - db
     - api
+
+  mysql:
+      image: mysql:5.7
+      # volumes:
+      #   - mysql_data:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: keycloak
+        MYSQL_USER: keycloak
+        MYSQL_PASSWORD: password
+  keycloak:
+      image: quay.io/keycloak/keycloak
+      environment:
+        DB_VENDOR: MYSQL
+        DB_ADDR: mysql
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: Pa55w0rd
+        # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the MySQL JDBC driver documentation in order to use it.
+        #JDBC_PARAMS: "connectTimeout=30000"
+      ports:
+        - 8888:8888
+      depends_on:
+        - mysql
 
 # Run docker-compose -f Docker-compose.yml up,
 #wait for it to initialize completely, and visit http://swarm-ip:8080, http://localhost:8080, or http://host-ip:8080 (as appropriate).
