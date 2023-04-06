@@ -53,3 +53,7 @@ routes that "works" at app and calls api
 ```
 
 keycloak is port 8888  when containers are up 
+
+proxy.config.json configura o angular para kc = keycloak server
+e assim o npm start virou: "ng serve --proxy-config proxy.conf.json"
+app/src/environments/environment.ts tem rota do kc harcoded
