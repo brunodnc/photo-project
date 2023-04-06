@@ -88,13 +88,18 @@ services:
         DB_USER: keycloak
         DB_PASSWORD: password
         KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: Pa55w0rd
+        KEYCLOAK_PASSWORD: admin
+        KEYCLOAK_ADMIN: admin
+        KEYCLOAK_ADMIN_PASSWORD: admin
         # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the MySQL JDBC driver documentation in order to use it.
         #JDBC_PARAMS: "connectTimeout=30000"
       ports:
-        - 8888:8888
+        - 8888:8080
       depends_on:
         - mysql
+      command:
+       - start-dev
+
 
 # Run docker-compose -f Docker-compose.yml up,
 #wait for it to initialize completely, and visit http://swarm-ip:8080, http://localhost:8080, or http://host-ip:8080 (as appropriate).

@@ -51,3 +51,5 @@ routes that "works" at app and calls api
 /Photographer/postPhotographer -> registers photographer
 
 ```
+
+keycloak is port 8888  when containers are up 
