@@ -1,9 +1,7 @@
 package jpb.photoproject.classes;
 
 import jakarta.persistence.*;
-import org.springframework.context.annotation.Lazy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

@@ -2,16 +2,13 @@ package jpb.photoproject.service;
 
 import jpb.photoproject.classes.Client;
 import jpb.photoproject.dao.ClientDAO;
-import jpb.photoproject.dto.client.RequestClientDTO;
 import jpb.photoproject.helper.HibernateHelper;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
